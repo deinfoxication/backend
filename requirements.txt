@@ -1,4 +1,4 @@
-celery[rabbitmq]==4.0.0rc3
+celery==4.0.0rc3
 click==6.6
 Flask==0.11.1
 prettyconf==1.2.3
