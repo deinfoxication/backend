@@ -47,5 +47,13 @@ def flake8():
     subprocess.check_call(['flake8'])
 
 
+@manager.command()
+@click.pass_context
+def build(ctx):
+    """Run all pre-commit commands."""
+    for task in (flake8, tests, isort):
+        ctx.invoke(task)
+
+
 if __name__ == '__main__':
     manager()
