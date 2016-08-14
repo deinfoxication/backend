@@ -33,5 +33,11 @@ def isort(fix=False):
     subprocess.check_call(args)
 
 
+@manager.command()
+def tests():
+    """Run py.test."""
+    print('Running tests...')
+    subprocess.check_call(['py.test', 'tests/'])
+
 if __name__ == '__main__':
     manager()
