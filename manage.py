@@ -39,5 +39,13 @@ def tests():
     print('Running tests...')
     subprocess.check_call(['py.test', 'tests/'])
 
+
+@manager.command()
+def flake8():
+    """Run flake8."""
+    print('Running flake8...')
+    subprocess.check_call(['flake8'])
+
+
 if __name__ == '__main__':
     manager()
