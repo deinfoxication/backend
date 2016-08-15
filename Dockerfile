@@ -7,3 +7,4 @@ WORKDIR /deinfoxication
 ADD requirements.txt /deinfoxication
 RUN pip install -r requirements.txt
 USER deinfoxication
+ADD . /deinfoxication
