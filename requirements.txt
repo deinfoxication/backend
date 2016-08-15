@@ -5,3 +5,4 @@ Flask==0.11.1
 prettyconf==1.2.3
 pytest==2.9.2
 isort==4.2.5
+raven[flask]==5.24.3
