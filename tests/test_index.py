@@ -1,3 +1,4 @@
+"""Index tests."""
 from flask import json
 from flask.helpers import url_for
 

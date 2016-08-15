@@ -10,6 +10,7 @@ from deinfoxication import create_app
 
 @click.group()
 def manager():
+    """Click group for manager commands."""
     pass
 
 
@@ -44,7 +45,10 @@ def tests():
 def flake8():
     """Run flake8."""
     print('Running flake8...')
-    subprocess.check_call(['flake8'])
+    try:
+        subprocess.check_call(['flake8'])
+    except subprocess.CalledProcessError:
+        exit(1)
 
 
 @manager.command()
