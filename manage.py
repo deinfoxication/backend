@@ -3,6 +3,7 @@
 import subprocess
 
 import click
+from IPython.terminal.embed import embed
 from prettyconf import config
 
 from deinfoxication import create_app
@@ -57,6 +58,11 @@ def build(ctx):
     """Run all pre-commit commands."""
     for task in (flake8, tests, isort):
         ctx.invoke(task)
+
+
+@manager.command()
+def shell():
+    embed()
 
 
 if __name__ == '__main__':
