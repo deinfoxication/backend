@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 """Manage file."""
+import os
 import subprocess
 
 import click
@@ -32,23 +33,24 @@ def isort(fix=False):
     args = ['isort', '-rc']
     if not fix:
         args.append('-c')
-    subprocess.check_call(args)
+    args.extend(['deinfoxication', os.path.join('migrations', 'versions'), 'tests'])
+    if subprocess.call(args) != 0:
+        exit(1)
 
 
 @manager.command()
 def tests():
     """Run py.test."""
     print('Running tests...')
-    subprocess.check_call(['py.test', 'tests/'])
+    if subprocess.call(['py.test', 'tests/']) != 0:
+        exit(1)
 
 
 @manager.command()
 def flake8():
     """Run flake8."""
     print('Running flake8...')
-    try:
-        subprocess.check_call(['flake8'])
-    except subprocess.CalledProcessError:
+    if subprocess.call(['flake8']) != 0:
         exit(1)
 
 
@@ -56,12 +58,13 @@ def flake8():
 @click.pass_context
 def build(ctx):
     """Run all pre-commit commands."""
-    for task in (flake8, tests, isort):
+    for task in (isort, flake8, tests):
         ctx.invoke(task)
 
 
 @manager.command()
 def shell():
+    """Open a interactive shell with the current global variables."""
     embed()
 
 
