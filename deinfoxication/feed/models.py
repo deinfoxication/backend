@@ -41,7 +41,7 @@ class Article(db.Model):
     url = db.Column(db.Unicode, nullable=False)
     html_text = db.Column(db.Unicode, nullable=False)
     clean_text = db.Column(db.Unicode, nullable=False)
-    publication_date = db.Column(postgresql.TIMESTAMP('UTC'))
+    publication_date = db.Column(postgresql.TIMESTAMP('UTC'), nullable=False)
 
 
 class Subscription(db.Model):

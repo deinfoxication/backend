@@ -1,6 +1,6 @@
-FROM python:3.5-alpine
-RUN apk add -U ca-certificates
-RUN adduser -D -s /bin/false -H -u 1000 deinfoxication
+FROM python:3.5
+RUN apt-get update && apt-get install ca-certificates libpq-dev -y
+RUN adduser --system --no-create-home --disabled-login --uid 1000 deinfoxication
 RUN mkdir -p /deinfoxication /.cache/pip
 RUN chown -R deinfoxication /deinfoxication /.cache/pip
 WORKDIR /deinfoxication

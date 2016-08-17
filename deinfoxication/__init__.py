@@ -7,10 +7,19 @@ from functools import lru_cache
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm.mapper import configure_mappers
 from raven.contrib.flask import Sentry
+from sqlalchemy import MetaData
+from sqlalchemy.orm.mapper import configure_mappers
 
-db = SQLAlchemy()
+convention = {
+  'ix': 'ix_%(column_0_label)s',
+  'uq': 'uq_%(table_name)s_%(column_0_name)s',
+  'ck': 'ck_%(table_name)s_%(constraint_name)s',
+  'fk': 'fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s',
+  'pk': 'pk_%(table_name)s'
+}
+
+db = SQLAlchemy(metadata=MetaData(naming_convention=convention))
 
 
 @lru_cache()

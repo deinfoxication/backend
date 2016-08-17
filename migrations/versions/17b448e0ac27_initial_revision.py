@@ -24,8 +24,8 @@ def upgrade():
         sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
         sa.Column('name', sa.Unicode(), nullable=True),
         sa.Column('url', sa.Unicode(), nullable=False),
-        sa.PrimaryKeyConstraint('id'),
-        sa.UniqueConstraint('url')
+        sa.PrimaryKeyConstraint('id', name=op.f('pk_feed')),
+        sa.UniqueConstraint('url', name=op.f('uq_feed_url'))
     )
     op.create_table(
         'user',
@@ -33,8 +33,8 @@ def upgrade():
         sa.Column('email', sa.Unicode(), nullable=False),
         sa.Column('password', sa.Unicode(), nullable=False),
         sa.Column('name', sa.Unicode(), nullable=False),
-        sa.PrimaryKeyConstraint('id'),
-        sa.UniqueConstraint('email')
+        sa.PrimaryKeyConstraint('id', name=op.f('pk_user')),
+        sa.UniqueConstraint('email', name=op.f('uq_user_email'))
     )
     op.create_table(
         'article',
@@ -44,18 +44,18 @@ def upgrade():
         sa.Column('url', sa.Unicode(), nullable=False),
         sa.Column('html_text', sa.Unicode(), nullable=False),
         sa.Column('clean_text', sa.Unicode(), nullable=False),
-        sa.Column('publication_date', postgresql.TIMESTAMP(timezone='UTC'), nullable=True),
-        sa.ForeignKeyConstraint(['feed_id'], ['feed.id'], ),
-        sa.PrimaryKeyConstraint('id')
+        sa.Column('publication_date', postgresql.TIMESTAMP(timezone='UTC'), nullable=False),
+        sa.ForeignKeyConstraint(['feed_id'], ['feed.id'], name=op.f('fk_article_feed_id_feed')),
+        sa.PrimaryKeyConstraint('id', name=op.f('pk_article'))
     )
     op.create_table(
         'subscription',
         sa.Column('id', postgresql.UUID(), server_default=sa.text('uuid_generate_v4()'), nullable=False),
         sa.Column('user_id', postgresql.UUID(), nullable=False),
         sa.Column('feed_id', postgresql.UUID(), nullable=False),
-        sa.ForeignKeyConstraint(['feed_id'], ['feed.id'], ),
-        sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
-        sa.PrimaryKeyConstraint('id')
+        sa.ForeignKeyConstraint(['feed_id'], ['feed.id'], name=op.f('fk_subscription_feed_id_feed')),
+        sa.ForeignKeyConstraint(['user_id'], ['user.id'], name=op.f('fk_subscription_user_id_user')),
+        sa.PrimaryKeyConstraint('id', name=op.f('pk_subscription'))
     )
     op.create_table(
         'rating',
@@ -66,10 +66,10 @@ def upgrade():
         sa.Column('user_rating', sa.DECIMAL(precision=4, scale=2), nullable=True),
         sa.Column('machine_rating', sa.DECIMAL(precision=4, scale=2), nullable=True),
         sa.Column('read', sa.Boolean(), server_default=sa.text('FALSE'), nullable=False),
-        sa.ForeignKeyConstraint(['article_id'], ['article.id'], ),
-        sa.ForeignKeyConstraint(['feed_id'], ['feed.id'], ),
-        sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
-        sa.PrimaryKeyConstraint('id')
+        sa.ForeignKeyConstraint(['article_id'], ['article.id'], name=op.f('fk_rating_article_id_article')),
+        sa.ForeignKeyConstraint(['feed_id'], ['feed.id'], name=op.f('fk_rating_feed_id_feed')),
+        sa.ForeignKeyConstraint(['user_id'], ['user.id'], name=op.f('fk_rating_user_id_user')),
+        sa.PrimaryKeyConstraint('id', name=op.f('pk_rating'))
     )
 
 
