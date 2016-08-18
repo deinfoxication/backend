@@ -1,0 +1,16 @@
+deinfoxication:
+  build: .
+  command: python manage.py runserver
+  volumes:
+    - .:/deinfoxication
+  ports:
+    - 8000:8000
+  links:
+    - postgres
+
+postgres:
+  image: postgres:9.6
+  environment:
+    - POSTGRES_PASSWORD=deinfoxication
+    - POSTGRES_USER=deinfoxication
+    - POSTGRES_DB=deinfoxication
