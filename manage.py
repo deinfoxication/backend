@@ -68,9 +68,5 @@ def shell():
     embed()
 
 
-    for task in (flake8, tests, isort):
-        ctx.invoke(task)
-
-
 if __name__ == '__main__':
     manager()

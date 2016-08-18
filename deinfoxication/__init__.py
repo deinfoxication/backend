@@ -3,8 +3,10 @@ import glob
 import importlib
 import itertools
 import os
+from functools import lru_cache
 
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 from raven.contrib.flask import Sentry
 from sqlalchemy import MetaData
 from sqlalchemy.orm.mapper import configure_mappers
