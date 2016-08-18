@@ -5,7 +5,9 @@ import itertools
 import os
 from functools import lru_cache
 
+from celery import Celery
 from flask import Flask
+from flask_click_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from raven.contrib.flask import Sentry
 from sqlalchemy import MetaData
@@ -20,6 +22,8 @@ convention = {
 }
 
 db = SQLAlchemy(metadata=MetaData(naming_convention=convention))
+celery = Celery(config_source='deinfoxication.configs')
+migrate = Migrate()
 
 
 @lru_cache()
@@ -41,11 +45,13 @@ def _preload_models():
 def create_app():
     """Create deinfoxication app."""
     app = Flask(__name__)
+    db.init_app(app)
     app.config.from_pyfile(os.path.join(os.path.dirname(__file__), 'configs.py'))
     app.sentry = Sentry(app, dsn=app.config['SENTRY_DSN'])
 
     # Configure the database and load models.
     db.init_app(app)
+    migrate.init_app(app, db, os.path.join(os.path.dirname(__file__), '..', 'migrations'))
     _preload_models()
 
     from .endpoints import register_endpoints
