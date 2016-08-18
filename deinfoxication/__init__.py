@@ -6,6 +6,7 @@ import os
 from functools import lru_cache
 
 from flask import Flask
+from flask_restless import APIManager
 from flask_sqlalchemy import SQLAlchemy
 from raven.contrib.flask import Sentry
 from sqlalchemy import MetaData
@@ -48,5 +49,13 @@ def create_app():
     app.sentry = Sentry(app, dsn=app.config['SENTRY_DSN'])
 
     _preload_models()
+
+    # Create the Flask-Restless API manager.
+    # manager = APIManager(app, flask_sqlalchemy_db=db)
+
+    # Create API endpoints, which will be available at /api/<tablename> by
+    # default. Allowed HTTP methods can be specified as well.
+    # from deinfoxication.feed.models import User
+    # manager.create_api(User, methods=['GET', 'POST', 'DELETE'])
 
     return app
