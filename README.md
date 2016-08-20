@@ -1,5 +1,8 @@
 # deinfoxication backend
 
+## What is deinfoxication?
+deinfoxication comes from [infoxication](https://en.wikipedia.org/wiki/Information_overload) and it is basically a feed reader that learns which news are more relevant to you based on your own ratings instead of social and popularity stuff.
+
 ## Shiny badges
 [![Stories in Ready](https://badge.waffle.io/deinfoxication/backend.png?label=ready&title=Ready)](http://waffle.io/deinfoxication/backend) [![Stories in Progress](https://badge.waffle.io/deinfoxication/backend.svg?label=In%20Progress&title=In%20Progress)](http://waffle.io/deinfoxication/backend)
 
