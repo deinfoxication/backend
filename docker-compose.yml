@@ -15,4 +15,4 @@ postgres:
     - POSTGRES_USER=deinfoxication
     - POSTGRES_DB=deinfoxication
   ports:
-    - 5432:5432
+    - 5433:5432

@@ -42,20 +42,21 @@ def _preload_models():
 def create_app():
     """Create deinfoxication app."""
     app = Flask(__name__)
-    db.init_app(app)
     app.config.from_pyfile(os.path.join(os.path.dirname(__file__), 'configs.py'))
+
+    # Configure the database and load models.
+    db.init_app(app)
+    _preload_models()
+
+    # Default endpoint.
     import deinfoxication.views  # noqa
     app.register_blueprint(deinfoxication.views.default_blueprint)
     app.sentry = Sentry(app, dsn=app.config['SENTRY_DSN'])
 
-    _preload_models()
-
-    # Create the Flask-Restless API manager.
-    # manager = APIManager(app, flask_sqlalchemy_db=db)
-
-    # Create API endpoints, which will be available at /api/<tablename> by
-    # default. Allowed HTTP methods can be specified as well.
-    # from deinfoxication.feed.models import User
-    # manager.create_api(User, methods=['GET', 'POST', 'DELETE'])
+    # Create other API endpoints.
+    manager = APIManager(app, flask_sqlalchemy_db=db)
+    from deinfoxication.feed.models import User
+    with app.app_context():
+        manager.create_api(User, methods=['GET', 'POST', 'DELETE'])
 
     return app
