@@ -1,4 +1,4 @@
-"""User's models."""
+"""Application models."""
 from sqlalchemy.dialects import postgresql
 
 from deinfoxication import db

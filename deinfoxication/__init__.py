@@ -6,7 +6,6 @@ import os
 from functools import lru_cache
 
 from flask import Flask
-from flask_restless import APIManager
 from flask_sqlalchemy import SQLAlchemy
 from raven.contrib.flask import Sentry
 from sqlalchemy import MetaData
@@ -43,20 +42,13 @@ def create_app():
     """Create deinfoxication app."""
     app = Flask(__name__)
     app.config.from_pyfile(os.path.join(os.path.dirname(__file__), 'configs.py'))
+    app.sentry = Sentry(app, dsn=app.config['SENTRY_DSN'])
 
     # Configure the database and load models.
     db.init_app(app)
     _preload_models()
 
-    # Default endpoint.
-    import deinfoxication.views  # noqa
-    app.register_blueprint(deinfoxication.views.default_blueprint)
-    app.sentry = Sentry(app, dsn=app.config['SENTRY_DSN'])
-
-    # Create other API endpoints.
-    manager = APIManager(app, flask_sqlalchemy_db=db)
-    from deinfoxication.feed.models import User
-    with app.app_context():
-        manager.create_api(User, methods=['GET', 'POST', 'DELETE'])
+    from .endpoints import register_endpoints
+    register_endpoints(app, db)
 
     return app
