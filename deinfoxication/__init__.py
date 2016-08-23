@@ -41,12 +41,14 @@ def _preload_models():
 def create_app():
     """Create deinfoxication app."""
     app = Flask(__name__)
-    db.init_app(app)
     app.config.from_pyfile(os.path.join(os.path.dirname(__file__), 'configs.py'))
-    import deinfoxication.views  # noqa
-    app.register_blueprint(deinfoxication.views.default_blueprint)
     app.sentry = Sentry(app, dsn=app.config['SENTRY_DSN'])
 
+    # Configure the database and load models.
+    db.init_app(app)
     _preload_models()
+
+    from .endpoints import register_endpoints
+    register_endpoints(app, db)
 
     return app

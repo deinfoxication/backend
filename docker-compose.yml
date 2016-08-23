@@ -14,3 +14,5 @@ postgres:
     - POSTGRES_PASSWORD=deinfoxication
     - POSTGRES_USER=deinfoxication
     - POSTGRES_DB=deinfoxication
+  ports:
+    - 5432:5432
