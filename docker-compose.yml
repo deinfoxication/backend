@@ -7,6 +7,7 @@ deinfoxication:
     - 8000:8000
   links:
     - postgres
+    - rabbitmq
 
 postgres:
   image: postgres:9.6
@@ -16,3 +17,6 @@ postgres:
     - POSTGRES_DB=deinfoxication
   ports:
     - 5432:5432
+
+rabbitmq:
+  image: rabbitmq:latest

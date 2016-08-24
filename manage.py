@@ -5,9 +5,14 @@ import subprocess
 
 import click
 from IPython.terminal.embed import embed
+from flask_click_migrate import MigrateGroup
 from prettyconf import config
 
-from deinfoxication import create_app
+from deinfoxication import create_app, celery as celery_instance, migrate
+from deinfoxication.utils import app_context
+
+app = create_app()
+migrate_group = MigrateGroup(migrate_instance=migrate)
 
 
 @click.group()
@@ -39,10 +44,12 @@ def isort(fix=False):
 
 
 @manager.command()
-def tests():
+@click.argument('extra_args', nargs=-1)
+def tests(extra_args):
     """Run py.test."""
     print('Running tests...')
-    if subprocess.call(['py.test', 'tests/']) != 0:
+    args = ['py.test', 'tests/']
+    if subprocess.call(args + list(extra_args)) != 0:
         exit(1)
 
 
@@ -63,10 +70,22 @@ def build(ctx):
 
 
 @manager.command()
+@app_context
 def shell():
     """Open a interactive shell with the current global variables."""
     embed()
 
 
+@manager.command()
+@click.argument('extra_args', nargs=-1)
+@click.pass_context
+def celery(ctx, extra_args):
+    """"Celery command."""
+    ctx.exit(celery_instance.worker_main(
+        list(extra_args)))
+
 if __name__ == '__main__':
-    manager()
+    app = create_app()
+    manager.add_command(migrate_group)
+    with app.app_context():
+        manager()
