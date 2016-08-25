@@ -31,4 +31,4 @@ class ArticleFactory(SQLAlchemyModelFactory):
         """Factory's configurations."""
 
         model = Article
-        sqlaclhemy_session = db.session
+        sqlalchemy_session = db.session
