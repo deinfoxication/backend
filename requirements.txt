@@ -2,6 +2,7 @@ alembic==0.8.7
 celery==4.0.0rc3
 click==6.6
 factory_boy==2.7.0
+feedparser==5.2.1
 flake8==3.0.4
 flake8-blind-except==0.1.1
 flake8-debugger==1.4.0
@@ -14,6 +15,7 @@ Flask-SQLAlchemy==2.1
 ipdb==0.10.1
 ipython==5.1.0
 isort==4.2.5
+lxml==3.6.4
 marshmallow==2.9.1
 pgcli==1.1.0
 prettyconf==1.2.3
