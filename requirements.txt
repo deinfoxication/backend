@@ -18,7 +18,7 @@ marshmallow==2.10.0
 pgcli==1.2.0
 prettyconf==1.2.3
 psycopg2==2.6.2
-pur==3.0.5
+pur==3.0.6
 pytest==3.0.2
 raven[flask]==5.26.0
 SQLAlchemy==1.0.15
