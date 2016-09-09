@@ -1,5 +1,5 @@
 alembic==0.8.7
-celery==4.0.0rc3
+celery==4.0.0rc4
 click==6.6
 factory_boy==2.7.0
 flake8==3.0.4
