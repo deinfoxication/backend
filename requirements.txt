@@ -22,6 +22,7 @@ prettyconf==1.2.3
 psycopg2==2.6.2
 pur==3.0.5
 pytest==3.0.0
+pytz==2016.6.1
 raven[flask]==5.24.3
 SQLAlchemy==1.0.14
 
