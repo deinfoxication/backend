@@ -23,6 +23,8 @@ class Feed(db.Model):
     id = db.Column(postgresql.UUID, primary_key=True, server_default=db.text('uuid_generate_v4()'))
     name = db.Column(db.Unicode, nullable=True)
     url = db.Column(db.Unicode, nullable=False, unique=True)
+    last_etag = db.Column(db.Unicode, nullable=True)
+    articles = db.relationship('Article')
 
     def __repr__(self):
         """Feed repr."""
