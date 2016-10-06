@@ -24,6 +24,6 @@ pur==4.0.0
 pytest==3.0.3
 pytz==2016.7
 raven[flask]==5.27.1
-SQLAlchemy==1.0.15
+SQLAlchemy==1.1.0
 
 -e git+https://github.com/eatfirst/Flask-Click-Migrate@first-release#egg=flask_click_migrate
