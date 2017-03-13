@@ -3,7 +3,7 @@ celery==4.0.0rc6
 click==6.6
 factory_boy==2.7.0
 feedparser==5.2.1
-flake8==3.0.4
+flake8==3.3.0
 flake8-blind-except==0.1.1
 flake8-debugger==1.4.0
 flake8-docstrings==1.0.2
