@@ -8,6 +8,5 @@ before_install:
 install: pip install -r requirements.txt
 script: ./manage.py $TRAVIS_STEP
 env:
-  - TRAVIS_STEP=isort
-  - TRAVIS_STEP=tests
   - TRAVIS_STEP=flake8
+  - TRAVIS_STEP=tests

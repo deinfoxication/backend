@@ -4,11 +4,12 @@ import os
 import subprocess
 
 import click
-from IPython.terminal.embed import embed
 from flask_click_migrate import MigrateGroup
+from IPython.terminal import embed
 from prettyconf import config
 
-from deinfoxication import create_app, celery as celery_instance, migrate
+from deinfoxication import celery as celery_instance
+from deinfoxication import create_app, migrate
 from deinfoxication.utils import app_context
 
 app = create_app()
@@ -73,7 +74,7 @@ def build(ctx):
 @app_context
 def shell():
     """Open a interactive shell with the current global variables."""
-    embed()
+    embed.embed()
 
 
 @manager.command()
@@ -83,6 +84,7 @@ def celery(ctx, extra_args):
     """"Celery command."""
     ctx.exit(celery_instance.worker_main(
         list(extra_args)))
+
 
 if __name__ == '__main__':
     app = create_app()
