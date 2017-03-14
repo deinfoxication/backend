@@ -2,6 +2,7 @@
 from datetime import datetime
 
 import feedparser
+import lxml
 import pytz
 from lxml.html import document_fromstring
 from sqlalchemy.orm.exc import NoResultFound
@@ -44,8 +45,11 @@ def update_feed(feed_id: str) -> None:
         article.publication_date = datetime(*list(last_date)[:6], tzinfo=pytz.UTC)
         raw_text = entry.content[0].value if hasattr(entry, 'content') else entry.summary
         article.html_text = raw_text
-        doc = document_fromstring(raw_text)
-        article.clean_text = doc.text_content()  # TODO: Clear an try to match up by content type
+        try:
+            doc = document_fromstring(raw_text)
+            article.clean_text = doc.text_content()  # TODO: Clear an try to match up by content type
+        except lxml.etree.LxmlSyntaxError:
+            article.clean_text = raw_text   # FIXME: This RSS might contain XML errors
         db.session.add(article)
 
     db.session.commit()
