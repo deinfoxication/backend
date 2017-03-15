@@ -22,7 +22,7 @@ pgcli==1.5.1
 prettyconf==1.2.3
 psycopg2==2.7.1
 pur==4.0.2
-pytest==3.0.6
+pytest==3.0.7
 pytz==2016.10
 raven[flask]==6.0.0
 SQLAlchemy==1.1.6
