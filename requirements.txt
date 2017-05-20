@@ -9,7 +9,7 @@ flake8-blind-except==0.1.1
 flake8-debugger==1.4.0
 flake8-docstrings==1.0.3
 flake8-isort==2.2
-flake8-quotes==0.9.0
+flake8-quotes==0.10.1
 Flask==0.12
 Flask-Restless==1.0.0b1
 Flask-SQLAlchemy==2.2
