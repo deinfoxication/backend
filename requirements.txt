@@ -24,7 +24,7 @@ psycopg2==2.7.1
 pur==4.0.2
 pytest==3.0.7
 pytz==2017.2
-raven[flask]==6.0.0
+raven[flask]==6.1.0
 SQLAlchemy==1.1.6
 
 -e git+https://github.com/eatfirst/Flask-Click-Migrate@0.1.0#egg=flask_click_migrate
