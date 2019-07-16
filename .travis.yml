@@ -10,7 +10,7 @@ before_install:
   - cp .env.sample .env
   - echo SQLALCHEMY_DATABASE_URI=postgresql://postgres@localhost/postgres >> .env
 install:
-  - pip install -U poetry pre-commit
+  - pip install -U pip poetry pre-commit
   - poetry install --no-ansi --no-interaction
 script:
   - pre-commit run --all-files
