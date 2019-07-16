@@ -596,8 +596,8 @@ python-versions = "*"
 version = "1.11.2"
 
 [metadata]
-content-hash = "7b50eeab962327252226e21fe909519e1551dca7d2420b4cff2c41d9f3303a1d"
-python-versions = "^3.7"
+content-hash = "a7119b30259694a3c303f0f6338a53c10473fadaad49fd356b08e3f8eaaf5453"
+python-versions = "^3.6"
 
 [metadata.hashes]
 Flask-Click-Migrate = []

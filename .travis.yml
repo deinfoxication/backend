@@ -5,7 +5,7 @@ cache:
     - $HOME/.cache/pip
     - $PRE_COMMIT_HOME
 python:
-  - "3.7"
+  - "3.6"
 before_install:
   - cp .env.sample .env
   - echo SQLALCHEMY_DATABASE_URI=postgresql://postgres@localhost/postgres >> .env

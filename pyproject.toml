@@ -1,3 +1,6 @@
+[tool.nitpick]
+style = ["https://raw.githubusercontent.com/andreoliwa/nitpick/master/nitpick-style.toml", "styles/python36"]
+
 [tool.poetry]
 name = "backend"
 version = "0.1.0"
@@ -5,7 +8,7 @@ description = ""
 authors = ["Your Name <you@example.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.6"
 alembic = "0.9.1"
 celery = "4.0.2"
 click = "6.7"
