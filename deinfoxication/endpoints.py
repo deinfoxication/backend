@@ -13,4 +13,4 @@ def register_endpoints(app, db):
     # Create other API endpoints using Flask-Restless.
     manager = APIManager(app, flask_sqlalchemy_db=db)
     with app.app_context():
-        manager.create_api(Feed, methods=['GET', 'POST', 'PUT', 'DELETE'], **validation_for(Feed, FeedSchema))
+        manager.create_api(Feed, methods=["GET", "POST", "PUT", "DELETE"], **validation_for(Feed, FeedSchema))
