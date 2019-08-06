@@ -1,4 +1,6 @@
 """Application schemas."""
+from typing import Type
+
 from flask_restless import ProcessingException, simple_serialize
 from marshmallow import Schema, fields
 from marshmallow.exceptions import ValidationError
@@ -10,7 +12,7 @@ class BaseSchema(Schema):
     id = fields.UUID()
 
 
-def validation_for(model_class, schema_class: BaseSchema.__class__):
+def validation_for(model_class, schema_class: Type[BaseSchema]):
     """Prepare validation for a schema, creating a serializer and a deserializer.
 
     This function should be used with :meth:`create_api`.
@@ -26,8 +28,8 @@ def validation_for(model_class, schema_class: BaseSchema.__class__):
         result = simple_serialize(model_instance, only=only)
         attributes = schema_instance.dump(model_instance).data
         """:type: dict"""
-        attributes.pop('id')
-        result['attributes'] = attributes
+        attributes.pop("id")
+        result["attributes"] = attributes
         return result
 
     def restless_deserializer(document):
@@ -55,14 +57,16 @@ def validation_for(model_class, schema_class: BaseSchema.__class__):
         """
         model_instance = model_class.query.get(resource_id)
         schema_instance.dump(model_instance)
-        result = schema_instance.load(data['data']['attributes'], partial=True)
+        result = schema_instance.load(data["data"]["attributes"], partial=True)
         if result.errors:
             raise ProcessingException(result.errors)
 
-    return dict(serializer=restless_serializer,
-                deserializer=restless_deserializer,
-                validation_exceptions=[ValidationError],
-                preprocessors={'PATCH_RESOURCE': [validate_put_single]})
+    return {
+        "serializer": restless_serializer,
+        "deserializer": restless_deserializer,
+        "validation_exceptions": [ValidationError],
+        "preprocessors": {"PATCH_RESOURCE": [validate_put_single]},
+    }
 
 
 class FeedSchema(BaseSchema):

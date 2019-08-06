@@ -41,15 +41,15 @@ def update_feed(feed_id: str) -> None:
         article.feed = feed
         article.title = entry.title
         article.url = entry.link
-        last_date = entry.updated_parsed if 'updated_parsed' in entry else entry.published_parsed
-        article.publication_date = datetime(*list(last_date)[:6], tzinfo=pytz.UTC)
-        raw_text = entry.content[0].value if hasattr(entry, 'content') else entry.summary
+        last_date = entry.updated_parsed if "updated_parsed" in entry else entry.published_parsed
+        article.publication_date = datetime(*list(last_date)[:6], tzinfo=pytz.UTC)  # type: ignore # noqa: T484
+        raw_text = entry.content[0].value if hasattr(entry, "content") else entry.summary
         article.html_text = raw_text
         try:
             doc = document_fromstring(raw_text)
             article.clean_text = doc.text_content()  # TODO: Clear an try to match up by content type
         except lxml.etree.LxmlSyntaxError:
-            article.clean_text = raw_text   # FIXME: This RSS might contain XML errors
+            article.clean_text = raw_text  # FIXME: This RSS might contain XML errors
         db.session.add(article)
 
     db.session.commit()
@@ -59,4 +59,4 @@ def update_feed(feed_id: str) -> None:
 @app_context
 def ping():
     """Simple celery task."""
-    return 'pong'
+    return "pong"

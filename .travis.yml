@@ -1,12 +1,20 @@
+dist: xenial
 language: python
-cache: pip
+cache:
+  directories:
+    - $HOME/.cache/pip
+    - $PRE_COMMIT_HOME
 python:
-  - "3.5"
+  - "3.7"
 before_install:
   - cp .env.sample .env
   - echo SQLALCHEMY_DATABASE_URI=postgresql://postgres@localhost/postgres >> .env
-install: pip install -r requirements.txt
-script: ./manage.py $TRAVIS_STEP
+install:
+  # Update pip and virtualenv to fix this https://github.com/pre-commit/pre-commit/issues/862#issuecomment-450224868
+  - pip install -U pip virtualenv pre-commit poetry
+  - poetry install --no-ansi --no-interaction
+script:
+  - pre-commit run --all-files
 env:
-  - TRAVIS_STEP=flake8
-  - TRAVIS_STEP=tests
+  global:
+    - PRE_COMMIT_HOME=$HOME/.cache/pre-commit

@@ -9,8 +9,8 @@ from deinfoxication.feed.models import Article, Feed
 class FeedFactory(SQLAlchemyModelFactory):
     """Feed's factory."""
 
-    name = 'Gnome Planet'
-    url = 'http://planet.gnome.org/atom.xml'
+    name = "Gnome Planet"
+    url = "http://planet.gnome.org/atom.xml"
 
     class Meta:
         """Factory's configurations."""
@@ -24,8 +24,8 @@ class ArticleFactory(SQLAlchemyModelFactory):
 
     feed = factory.SubFactory(FeedFactory)
 
-    title = 'An Article'
-    url = 'article-url'
+    title = "An Article"
+    url = "article-url"
 
     class Meta:
         """Factory's configurations."""
