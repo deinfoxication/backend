@@ -180,6 +180,7 @@ six = "*"
 reference = "0.1.0"
 type = "git"
 url = "https://github.com/eatfirst/Flask-Click-Migrate.git"
+
 [[package]]
 category = "main"
 description = "A Flask extension for easy ReSTful API generation"
@@ -502,7 +503,7 @@ description = "World timezone definitions, modern and historical"
 name = "pytz"
 optional = false
 python-versions = "*"
-version = "2017.2"
+version = "2019.2"
 
 [[package]]
 category = "main"
@@ -596,7 +597,7 @@ python-versions = "*"
 version = "1.11.2"
 
 [metadata]
-content-hash = "7b50eeab962327252226e21fe909519e1551dca7d2420b4cff2c41d9f3303a1d"
+content-hash = "e9907d5794d3d72b631db8bb74ef424da674c4865fc66a2abab36b2582a752e8"
 python-versions = "^3.7"
 
 [metadata.hashes]
@@ -648,7 +649,7 @@ pytest = ["66f332ae62593b874a648b10a8cb106bfdacd2c6288ed7dec3713c3a808a6017", "b
 python-dateutil = ["7e6584c74aeed623791615e26efd690f29817a27c73085b78e4bad02493df2fb", "c89805f6f4d64db21ed966fda138f8a5ed7a4fdbc1a8ee329ce1b74e3c74da9e"]
 python-editor = ["1bf6e860a8ad52a14c3ee1252d5dc25b2030618ed80c022598f00176adc8367d", "51fda6bcc5ddbbb7063b2af7509e43bd84bfc32a4ff71349ec7847713882327b", "5f98b069316ea1c2ed3f67e7f5df6c0d8f10b689964a4a811ff64f0106819ec8", "c3da2053dbab6b29c94e43c486ff67206eafbe7eb52dbec7390b5e2fb05aac77", "ea87e17f6ec459e780e4221f295411462e0d0810858e055fc514684350a2f522"]
 python-mimeparse = ["76e4b03d700a641fd7761d3cd4fdbbdcd787eade1ebfac43f877016328334f78", "a295f03ff20341491bfe4717a39cd0a8cc9afad619ba44b77e86b0ab8a2b8282"]
-pytz = ["03c9962afe00e503e2d96abab4e8998a0f84d4230fa57afe1e0528473698cdd9", "39504670abb5dae77f56f8eb63823937ce727d7cdd0088e6909e6dcac0f89043", "43f52d4c6a0be301d53ebd867de05e2926c35728b3260157d274635a0a947f1c", "487e7d50710661116325747a9cd1744d3323f8e49748e287bc9e659060ec6bf9", "54a935085f7bf101f86b2aff75bd9672b435f51c3339db2ff616e66845f2b8f9", "c883c2d6670042c7bc1688645cac73dd2b03193d1f7a6847b6154e96890be06d", "d1d6729c85acea5423671382868627129432fba9a89ecbb248d8d1c7a9f01c67", "ddc93b6d41cfb81266a27d23a79e13805d4a5521032b512643af8729041a81b4", "f5c056e8f62d45ba8215e5cb8f50dfccb198b4b9fbea8500674f3443e4689589"]
+pytz = ["26c0b32e437e54a18161324a2fca3c4b9846b74a8dccddd843113109e1116b32", "c894d57500a4cd2d5c71114aaab77dbab5eabd9022308ce5ac9bb93a60a6f0c7"]
 raven = ["c9b521eaa4f253b5ed96051ab8f7c8e61fe901f9fc18ee6d9ac99726fbcb14fe", "cee2d745c762230383fc89365770552c93c71205ee92c6e6bbbd85fe4dbb2803"]
 six = ["3350809f0555b11f552448330d0b52d5f24c91a322ea4a15ef22629740f3761c", "d16a0141ec1a18405cd4ce8b4613101da75da0e9a7aec5bdd4fa804d0e0eba73"]
 sqlalchemy = ["815924e3218d878ddd195d2f9f5bf3d2bb39fabaddb1ea27dace6ac27d9865e4"]

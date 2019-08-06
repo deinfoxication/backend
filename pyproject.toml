@@ -17,7 +17,7 @@ lxml = "*"
 marshmallow = "2.13.4"
 prettyconf = "1.2.3"
 psycopg2 = "2.7.1"
-pytz = "2017.2"
+pytz = "2019.2"
 raven = {version = "6.0.0", extras = ["flask"]}
 SQLAlchemy = "1.1.6"
 flask_click_migrate = {git = "https://github.com/eatfirst/Flask-Click-Migrate.git", tag = "0.1.0"}
