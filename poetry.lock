@@ -150,17 +150,17 @@ version = "5.2.1"
 
 [[package]]
 category = "main"
-description = "A microframework based on Werkzeug, Jinja2 and good intentions"
+description = "A simple framework for building complex web applications."
 name = "flask"
 optional = false
 python-versions = "*"
-version = "0.12"
+version = "1.0"
 
 [package.dependencies]
-Jinja2 = ">=2.4"
-Werkzeug = ">=0.7"
-click = ">=2.0"
-itsdangerous = ">=0.21"
+Jinja2 = ">=2.10"
+Werkzeug = ">=0.14"
+click = ">=5.1"
+itsdangerous = ">=0.24"
 
 [[package]]
 category = "main"
@@ -180,6 +180,7 @@ six = "*"
 reference = "0.1.0"
 type = "git"
 url = "https://github.com/eatfirst/Flask-Click-Migrate.git"
+
 [[package]]
 category = "main"
 description = "A Flask extension for easy ReSTful API generation"
@@ -596,7 +597,7 @@ python-versions = "*"
 version = "1.11.2"
 
 [metadata]
-content-hash = "7b50eeab962327252226e21fe909519e1551dca7d2420b4cff2c41d9f3303a1d"
+content-hash = "ed23d5a6005fb75c8426701eae34e17842ef1b89d7c870c3113d34d0c9ed1086"
 python-versions = "^3.7"
 
 [metadata.hashes]
@@ -616,7 +617,7 @@ decorator = ["86156361c50488b84a3f148056ea716ca587df2f0de1d34750d35c21312725de",
 factory-boy = ["728df59b372c9588b83153facf26d3d28947fc750e8e3c95cefa9bed0e6394ee", "faf48d608a1735f0d0a3c9cbf536d64f9132b547dae7ba452c4d99a79e84a370"]
 faker = ["96ad7902706f2409a2d0c3de5132f69b413555a419bacec99d3f16e657895b47", "b3bb64aff9571510de6812df45122b633dbc6227e870edae3ed9430f94698521"]
 feedparser = ["bd030652c2d08532c034c27fcd7c85868e7fa3cb2b17f230a44a6bbc92519bf9", "cd2485472e41471632ed3029d44033ee420ad0b57111db95c240c9160a85831c", "ce875495c90ebd74b179855449040003a1beb40cd13d5f037a0654251e260b02"]
-flask = ["7f03bb2c255452444f7265eddb51601806e5447b6f8a2d50bbc77a654a14c118", "93e803cdbe326a61ebd5c5d353959397c85f829bec610d59cb635c9f97d7ca8b"]
+flask = ["7fab1062d11dd0038434e790d18c5b9133fd9e6b7257d707c4578ccc1e38b67c", "b1883637bbee4dc7bc98d900792d0a304d609fce0f5bd9ca91d1b6457e5918dd"]
 flask-restless = ["aa66c97adae9d27fa74e9de785aac416479aa59687a8ea3b39993e449847406f", "d9fb849a848379992b380b9739e8536315f8b9a8f3ee54185562f1e0e90f60e0"]
 flask-sqlalchemy = ["f0d8241efba723d7b878f73550f5d3c0fbb042416123b52b36640b7491fa208b", "fa3bd6343de231b2b3376a276df6d331c63c766449b660fc04d375a1c21312ac"]
 ipdb = ["dce2112557edfe759742ca2d0fee35c59c97b0cc7a05398b791079d78f1519ce"]
